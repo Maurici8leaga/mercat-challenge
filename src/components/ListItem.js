@@ -1,6 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { getItems } from '../actions/indexAction';
 
-const ListItem = () => {
+const ListItem = ({getItems, item}) => {
+
+    useEffect(() =>{
+        getItems();
+    }, [getItems]);
+
+    console.log( item, 'esto es del API');
+
+
     return (
         <div>
             <div className="container">
@@ -27,4 +37,8 @@ const ListItem = () => {
     )
 }
 
-export default ListItem;
+const mapStateToProps = state => ({
+    item: state.item.product
+})
+
+export default connect(mapStateToProps, {getItems})(ListItem);

@@ -4,7 +4,7 @@ import axios from 'axios';
 export const getItems = () => async dispatch => {
 
     try{
-        const item = await axios.get('https://www.amiiboapi.com/api/amiibo/?name=mario');
+        const item = await axios.get('https://www.amiiboapi.com/api/amiibo/?amiiboSeries=Yu-Gi-Oh!');
         
         dispatch({
             type: GET_ITEMS,
@@ -13,4 +13,4 @@ export const getItems = () => async dispatch => {
     } catch (error){
         console.log('ha ocurrido un error', error);
     }
-}
+};
