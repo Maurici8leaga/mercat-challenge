@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import CardSummary from './CardSummary';
+import TotalCart from './TotalCart';
 
-const Header = () => {
+const Header = ({ cart }) => {
+
+    const [cartCount, setCartCount] = useState(0);
+
+    useEffect(() => {
+        let count = 0;
+
+        cart.forEach((item) => {
+            count += item.qty;
+        });
+
+        setCartCount(count);
+    }, [cart, cartCount])
 
     const cartToggle = () => {
         return (
@@ -18,7 +32,12 @@ const Header = () => {
                         <h2>CART SUMMARY</h2>
 
                         <div className="container">
-                            <CardSummary />
+
+                            {cart.map((item) => (
+                                <CardSummary key={item.id} dataProduct={item}/>
+                            ))}
+
+                            <TotalCart/>
 
                             <div className="d-grid gap-2 py-4">
                                 <Link to="/cart" className="btn btn-success" >Proceed to checkout</Link>
@@ -39,7 +58,7 @@ const Header = () => {
                     <Link className="navbar-brand text-white ms-5" to="/">E-commerce Page</Link>
 
                     <button className="btn btn-primary me-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
-                        Cart
+                        Cart {' ' + cartCount}
                     </button>
 
                     <>
@@ -52,4 +71,7 @@ const Header = () => {
     )
 }
 
-export default Header;
+const mapStateToProps = state => ({
+    cart: state.item.cart
+})
+export default connect(mapStateToProps)(Header);
