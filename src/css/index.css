@@ -1,0 +1,17 @@
+.card-width{
+    width: 18rem;
+}
+
+.extra-mt{
+    margin-top: 16vh !important;
+}
+
+.container-cart{
+    max-width: 600px;
+    margin: auto;
+}
+
+.container-card-toggler{
+    max-width: 100px;
+    margin: auto;
+}

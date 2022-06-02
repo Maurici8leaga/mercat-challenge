@@ -1,14 +1,20 @@
 import React from 'react';
+import '../css/index.css';
+import CardSummary from './CardSummary';
 
-const  Cart = () => {
+const Cart = () => {
   return (
-    <div className="container">
-        <h2 className="text-center">CART ITEMS</h2>
-        <div className="row">
-            <div className="col-12">ITEM</div>
-            <div className="col-12">ITEM</div>
-            <div className="col-12">ITEM</div>
-        </div>
+    <div className="container-cart">
+      <div className="extra-mt">
+
+        <h2 className="text-center mb-3">Cart Summary</h2>
+
+          <CardSummary/>
+          
+          <div className="d-grid gap-2 py-4">
+            <button className="btn btn-success" type="button">Pay out</button>
+          </div>
+      </div>
     </div>
 
   )

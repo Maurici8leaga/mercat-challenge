@@ -1,36 +1,29 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getItems } from '../actions/indexAction';
+import CardProduct from './CardProduct';
 
-const ListItem = ({getItems, item}) => {
+const ListItem = ({ getItems, item }) => {
 
-    useEffect(() =>{
+    useEffect(() => {
         getItems();
     }, [getItems]);
 
-    console.log( item, 'esto es del API');
 
+    console.log(item, 'esto es del API');
 
-    return (
+    return !item || !item.length > 0 ? (<div>loading...</div>) : (
         <div>
-            <div className="container">
-                <h2 className="text-center">List Item</h2>
-                <div className="row">
-                    <div className="col-3">Item</div>
-                    <div className="col-3">Item</div>
-                    <div className="col-3">Item</div>
-
-                    <div className="col-3">
-                        <aside>
-                            <h2>CART ITEMS</h2>
-                            <div className="row">
-                                <div className="col-12">ITEM</div>
-                                <div className="col-12">ITEM</div>
-                                <div className="col-12">ITEM</div>
+            <div className="container extra-mt">
+                <h2 className="text-center mt-4 mb-4">YU-GI-OH! Store</h2>
+                <div className="text-center row row-cols-lg-3 row-cols-md-2 row-cols-sm-1  g-3 ms-5">
+                    {item.map((item, index) => (
+                        <div key={index}>
+                            <div className="col mb-3">
+                                <CardProduct product={item} />
                             </div>
-                        </aside>
-
-                    </div>
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>
@@ -41,4 +34,4 @@ const mapStateToProps = state => ({
     item: state.item.product
 })
 
-export default connect(mapStateToProps, {getItems})(ListItem);
+export default connect(mapStateToProps, { getItems })(ListItem);
