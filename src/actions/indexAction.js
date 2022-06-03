@@ -1,4 +1,4 @@
-import { GET_ITEMS, ADD_TO_CART, DELETE_FROM_CART, ADJUST_QTY } from "./types";
+import { GET_ITEMS, ADD_TO_CART, DELETE_FROM_CART, ADJUST_QTY, SET_CART } from "./types";
 import axios from 'axios';
 
 // request data to API
@@ -29,7 +29,7 @@ export const getItems = () => async dispatch => {
             payload: itemUpdate
         });
     } catch (error) {
-        console.log('ha ocurrido un error', error);
+        console.log(error);
     }
 };
 
@@ -42,9 +42,8 @@ export const addCart = (itemID) => async dispatch => {
                 id: itemID
             }
         })
-        console.log(itemID, 'esto es add action');
     } catch (error) {
-        console.log('ha ocurrido un error al agregar el item', error);
+        console.log(error);
     }
 }
 
@@ -58,7 +57,7 @@ export const deleteItem = (itemID) => async dispatch => {
             }
         })
     } catch (error) {
-        console.log('ha ocurrido un error al eliminar el item', error);
+        console.log(error);
     }
 }
 
@@ -73,6 +72,18 @@ export const adjustQty = (itemID, value) => async dispatch => {
             }
         })
     } catch (error) {
-        console.log('ha ocurrido un error', error);
+        console.log(error);
+    }
+}
+
+// set shopping cart
+export const setCart = (cart) => async dispatch => {
+    try {
+        dispatch({
+            type: SET_CART,
+            payload: cart
+        })
+    } catch (error) {
+        console.log(error);
     }
 }

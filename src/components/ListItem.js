@@ -10,8 +10,6 @@ const ListItem = ({ getItems, item }) => {
         getItems();
     }, [getItems]);
 
-    console.log(item, 'esto es del API');
-
     return !item || !item.length > 0 ? (<div>loading...</div>) : (
         <div>
             <div className="container extra-mt">
