@@ -1,14 +1,15 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import {deleteItem, adjustQty} from '../actions/indexAction';
+import { deleteItem, adjustQty } from '../actions/indexAction';
+import trashLogo from '../extras/trash-can.svg';
 
-const CartSummary = ({dataProduct, deleteItem, adjustQty}) => { 
+const CartSummary = ({ dataProduct, deleteItem, adjustQty }) => {
 
     useEffect(() => {
         deleteItem()
     }, [deleteItem, adjustQty]);
 
-    const {name, price, qty, id} = dataProduct;
+    const { name, price, qty, id } = dataProduct;
 
     const [, setQty] = useState(qty);
 
@@ -23,20 +24,25 @@ const CartSummary = ({dataProduct, deleteItem, adjustQty}) => {
             <div className="row">
                 <div className="col-12">
                     <div className=" mb-3">
+                        <div className="row d-flex mb-3">
 
-                        <div className="row d-flex align-content-center mb-3">
-
-                            <div className="col-7">{name} $ {price}</div>
+                            <div className="col-7">
+                                <div className="container-texto">
+                                    <>{name} <div className="text-warning">${price}</div></>
+                                </div>
+                            </div>
 
                             <div className="col-4 ">
                                 <div className="input-group ">
                                     <label className="form-label me-3">Qty</label>
-                                    <input type="number" className="form-control" min="1" name="qty" value={qty} onChange={onChangeHandler}/>
+                                    <input type="number" className="form-control" min="1" name="qty" value={qty} onChange={onChangeHandler} />
                                 </div>
                             </div>
 
                             <div className="col-1">
-                                <button className="btn btn-danger" onClick={e => deleteItem(id)}>delete</button>
+                                <button className="btn btn-danger btn-sm" onClick={e => deleteItem(id)}>
+                                    <img src={trashLogo} alt="trash-can" className="button-icon-container" />
+                                </button>
                             </div>
                         </div>
 
@@ -48,4 +54,4 @@ const CartSummary = ({dataProduct, deleteItem, adjustQty}) => {
     )
 }
 
-export default connect(null, {deleteItem, adjustQty}) (CartSummary);
+export default connect(null, { deleteItem, adjustQty })(CartSummary);

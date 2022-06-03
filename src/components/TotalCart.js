@@ -20,8 +20,9 @@ const TotalCart = ({ cart }) => {
     }, [cart, totalPrice, totalItems, setTotalItems, setTotalPrice])
 
     return (
-        <div className="">
-            TOTAL : ({totalItems} Items) ----   $ {totalPrice}
+        <div className="d-flex justify-content-between ms-4">
+            <h5> Total: ({totalItems} Items) </h5>
+            <div className="text-warning fs-5">$ {totalPrice}</div>
         </div>
 
     )

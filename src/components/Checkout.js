@@ -10,13 +10,21 @@ const Checkout = ({ cart }) => {
     <div className="container-cart">
       <div className="extra-mt">
 
-        <h2 className="text-center mb-3">Checkout</h2>
+        <div class="card border-success mb-3">
+          <div class="card-header bg-transparent border-success">
+            <h2 className="text-center">Checkout</h2>
+          </div>
+          <div class="card-body text-success container-chekcout">
 
-        {cart.map((item) => (
-          <CartSummary key={item.id} dataProduct={item} />
-        ))}
+            {cart.map((item) => (
+              <CartSummary key={item.id} dataProduct={item} />
+            ))}
 
-        <TotalCart />
+          </div>
+          <div class="card-footer bg-transparent border-success container-chekcout">
+            <TotalCart />
+          </div>
+        </div>
 
         <div className="d-grid gap-2 py-4">
           <button className="btn btn-success" type="button">Pay out</button>

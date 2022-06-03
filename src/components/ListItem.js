@@ -4,11 +4,11 @@ import { getItems } from '../actions/indexAction';
 import CardProduct from './CardProduct';
 
 const ListItem = ({ getItems, item }) => {
-
+    
     useEffect(() => {
+    
         getItems();
     }, [getItems]);
-
 
     console.log(item, 'esto es del API');
 
@@ -19,7 +19,7 @@ const ListItem = ({ getItems, item }) => {
                 <div className="text-center row row-cols-lg-3 row-cols-md-2 row-cols-sm-1  g-3 ms-5">
                     {item.map((item, index) => (
                         <div key={index}>
-                            <div className="col mb-3">
+                            <div className="col mb-3 card-shadow">
                                 <CardProduct product={item} />
                             </div>
                         </div>
