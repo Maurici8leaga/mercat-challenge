@@ -3,11 +3,6 @@
 This is a reply to mercat contest test which is a page that will be a e-commerce page where you can see a variety of products , if you like a item you will be able to choose them and adding to the shopping cart, after that you can checkout the item that are in the shopping carth and finish your purchase.
 
 
-# ECOMMERCE STORE
-
-This is a reply to mercat contest test which is a page that will be a e-commerce page where you can see a variety of products , if you like a item you will be able to choose them and adding to the shopping cart, after that you can checkout the item that are in the shopping carth and finish your purchase.
-
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
