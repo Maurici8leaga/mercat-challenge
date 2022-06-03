@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import CardSummary from './CardSummary';
+import CartSummary from './CartSummary';
 import TotalCart from './TotalCart';
 
 const Header = ({ cart }) => {
@@ -34,13 +34,13 @@ const Header = ({ cart }) => {
                         <div className="container">
 
                             {cart.map((item) => (
-                                <CardSummary key={item.id} dataProduct={item}/>
+                                <CartSummary key={item.id} dataProduct={item}/>
                             ))}
 
                             <TotalCart/>
 
                             <div className="d-grid gap-2 py-4">
-                                <Link to="/cart" className="btn btn-success" >Proceed to checkout</Link>
+                                <Link to="/checkout" className="btn btn-success" >Proceed to checkout</Link>
                             </div>
                         </div>
 

@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import ListItem from './components/ListItem';
 import Header from './components/Header';
-import Cart from './components/Cart';
+import Checkout from './components/Checkout';
 import store from './reducers/store';
 
 
@@ -15,7 +15,7 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<ListItem />} />
-            <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} />
           </Routes>
         </BrowserRouter>
       </Provider>

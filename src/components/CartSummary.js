@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux';
 import {deleteItem, adjustQty} from '../actions/indexAction';
 
-const CardSummary = ({dataProduct, deleteItem, adjustQty}) => { 
+const CartSummary = ({dataProduct, deleteItem, adjustQty}) => { 
 
     useEffect(() => {
         deleteItem()
@@ -48,4 +48,4 @@ const CardSummary = ({dataProduct, deleteItem, adjustQty}) => {
     )
 }
 
-export default connect(null, {deleteItem, adjustQty}) (CardSummary);
+export default connect(null, {deleteItem, adjustQty}) (CartSummary);

@@ -7,9 +7,6 @@ const INITIAL_STATE = {
 
 const getItemReducer = (state = INITIAL_STATE, action) => {
     const {type, payload} = action;
-    const {cart} = state;
-
-    console.log(cart, 'esto es cart');
 
     switch(type){
         case GET_ITEMS: 

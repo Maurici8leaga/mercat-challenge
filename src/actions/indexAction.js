@@ -76,4 +76,3 @@ export const adjustQty = (itemID, value) => async dispatch => {
         console.log('ha ocurrido un error', error);
     }
 }
-
