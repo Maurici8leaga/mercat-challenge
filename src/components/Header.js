@@ -24,11 +24,8 @@ const Header = ({ cart }) => {
             <>
                 <div className="offcanvas offcanvas-end color-light" data-bs-scroll="true" data-bs-backdrop="false" tabIndex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
                     <div className="offcanvas-header">
-                        {/* <h5 className="offcanvas-title" id="offcanvasScrollingLabel">
-                            Cart
-                        </h5> */}
-                        <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close">
 
+                        <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close">
                         </button>
                     </div>
                     <div className="offcanvas-body text-white">
