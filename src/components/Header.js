@@ -1,85 +1,97 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import CartSummary from './CartSummary';
-import TotalCart from './TotalCart';
-import cartLogo from '../extras/cart.svg';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import CartSummary from "./CartSummary";
+import TotalCart from "./TotalCart";
+import cartLogo from "../extras/cart.svg";
 
 const Header = ({ cart }) => {
+	const [cartCount, setCartCount] = useState(0);
 
-    const [cartCount, setCartCount] = useState(0);
+	useEffect(() => {
+		let count = 0;
 
-    useEffect(() => {
-        let count = 0;
+		cart.forEach((item) => {
+			count += item.qty;
+		});
 
-        cart.forEach((item) => {
-            count += item.qty;
-        });
+		setCartCount(count);
+	}, [cart, cartCount]);
 
-        setCartCount(count);
-    }, [cart, cartCount])
+	const cartToggle = () => {
+		return (
+			<>
+				<div
+					className="offcanvas offcanvas-end color-light"
+					data-bs-scroll="true"
+					data-bs-backdrop="false"
+					tabIndex="-1"
+					id="offcanvasScrolling"
+					aria-labelledby="offcanvasScrollingLabel"
+				>
+					<div className="offcanvas-header">
+						<button
+							type="button"
+							className="btn-close btn-close-white"
+							data-bs-dismiss="offcanvas"
+							aria-label="Close"
+						></button>
+					</div>
+					<div className="offcanvas-body text-white">
+						<h2 className="text-center mb-4">Cart Summary</h2>
 
-    const cartToggle = () => {
-        return (
-            <>
-                <div className="offcanvas offcanvas-end color-light" data-bs-scroll="true" data-bs-backdrop="false" tabIndex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
-                    <div className="offcanvas-header">
-                        {/* <h5 className="offcanvas-title" id="offcanvasScrollingLabel">
-                            Cart
-                        </h5> */}
-                        <button type="button" className="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close">
+						<div className="container-cartSummary">
+							{cart.map((item) => (
+								<CartSummary key={item.id} dataProduct={item} />
+							))}
 
-                        </button>
-                    </div>
-                    <div className="offcanvas-body text-white">
-                        <h2 className="text-center mb-4">Cart Summary</h2>
+							<TotalCart />
 
-                        <div className="container-cartSummary">
-                            {cart.map((item) => (
-                                <CartSummary key={item.id} dataProduct={item} />
-                            ))}
+							<div className="d-grid gap-2 py-4 ms-4">
+								<Link to="/checkout" className="btn btn-success">
+									Proceed to checkout
+								</Link>
+							</div>
+						</div>
+					</div>
+				</div>
+			</>
+		);
+	};
 
-                            <TotalCart />
+	return (
+		<header>
+			<nav className="navbar fixed-top color-blue">
+				<div className="container-fluid">
+					<Link className="navbar-brand text-white ms-5" to="/">
+						E-commerce Page
+					</Link>
 
-                            <div className="d-grid gap-2 py-4 ms-4">
-                                <Link to="/checkout" className="btn btn-success" >Proceed to checkout</Link>
-                            </div>
-                        </div>
+					<button
+						className="btn btn-warning me-5"
+						type="button"
+						data-bs-toggle="offcanvas"
+						data-bs-target="#offcanvasScrolling"
+						aria-controls="offcanvasScrolling"
+					>
+						<div className="d-flex flex-row align-middle">
+							<img
+								src={cartLogo}
+								alt="cartLogo"
+								className="button-cart-icon me-2"
+							/>
+							<div className="button-circle">{cartCount}</div>
+						</div>
+					</button>
 
-                    </div>
-                </div>
+					<>{cartToggle()}</>
+				</div>
+			</nav>
+		</header>
+	);
+};
 
-            </>);
-    }
-
-
-    return (
-        <header >
-            <nav className="navbar fixed-top color-blue">
-                <div className="container-fluid">
-                    <Link className="navbar-brand text-white ms-5" to="/">E-commerce Page</Link>
-
-                    <button className="btn btn-warning me-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
-                        <div className="d-flex flex-row align-middle">
-
-                            <img src={cartLogo} alt="cartLogo" className="button-cart-icon me-2" />
-                            <div className="button-circle">
-                                {cartCount}
-                            </div>
-                        </div>
-                    </button>
-
-                    <>
-                        {cartToggle()}
-                    </>
-
-                </div>
-            </nav>
-        </header>
-    )
-}
-
-const mapStateToProps = state => ({
-    cart: state.item.cart
-})
+const mapStateToProps = (state) => ({
+	cart: state.item.cart,
+});
 export default connect(mapStateToProps)(Header);
