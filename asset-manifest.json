@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/mercat-challenge/static/css/main.0c99ed36.css",
+    "main.js": "/mercat-challenge/static/js/main.7388da6f.js",
+    "static/media/cart.svg": "/mercat-challenge/static/media/cart.f4a584c783ccc029be55d3b33e0fec1e.svg",
+    "index.html": "/mercat-challenge/index.html",
+    "static/media/trash-can.svg": "/mercat-challenge/static/media/trash-can.4c1b5a13bdb9365d6bdcf45b2d5f3784.svg",
+    "main.0c99ed36.css.map": "/mercat-challenge/static/css/main.0c99ed36.css.map",
+    "main.7388da6f.js.map": "/mercat-challenge/static/js/main.7388da6f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0c99ed36.css",
+    "static/js/main.7388da6f.js"
+  ]
+}
